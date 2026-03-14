@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Go-To-Market Strategy Quiz</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    margin:40px;
+    background:#f4f6f9;
+}
+
+h1,h2{
+    color:#2c3e50;
+}
+
+.container{
+    max-width:900px;
+    margin:auto;
+    background:white;
+    padding:30px;
+    border-radius:10px;
+    box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+.timer{
+    font-size:22px;
+    font-weight:bold;
+    color:red;
+    float:right;
+}
+
+.question{
+    margin-top:25px;
+}
+
+button{
+    margin-top:20px;
+    padding:10px 20px;
+    background:#2c3e50;
+    color:white;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#1a252f;
+}
+
+.result{
+    font-size:20px;
+    font-weight:bold;
+    margin-top:20px;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Go-To-Market Strategy Learning Module</h1>
+
+<div class="timer">
+Time Left: <span id="time">10:00</span>
+</div>
+
+<h2>Key Strategy Insights</h2>
+
+<ul>
+<li><b>Go-To-Market Strategy (GTM)</b> determines how a company delivers its product to target customers and captures value.</li>
+<li>Marketing begins <b>before product development</b>, identifying customer needs and value opportunities.</li>
+<li><b>Customer value</b> occurs when perceived benefit exceeds perceived cost.</li>
+<li>Products compete not only with direct competitors but also with <b>alternative solutions</b>.</li>
+<li>Companies must decide:
+<ul>
+<li>Target segment</li>
+<li>Value proposition</li>
+<li>Distribution channel</li>
+<li>Pricing strategy</li>
+</ul></li>
+
+<li><b>Need vs Want</b>
+<ul>
+<li>Need = fundamental problem (e.g., thirst)</li>
+<li>Want = specific solution (water, juice, bottled water)</li>
+</ul></li>
+
+<li><b>Brand value</b> influences emotional and functional benefits beyond the product itself.</li>
+
+<li><b>SWOT Analysis</b> evaluates strengths, weaknesses, opportunities, and threats.</li>
+
+<li><b>Porter's Five Forces</b> helps analyze industry attractiveness.</li>
+
+<li>Successful companies deliver multiple <b>elements of value</b> that customers perceive as superior.</li>
+
+</ul>
+
+<hr>
+
+<h2>Strategy Quiz</h2>
+
+<form id="quizForm">
+
+<div class="question">
+1. What is the main purpose of a Go-To-Market strategy?<br>
+<input type="radio" name="q1" value="a"> Develop new technologies<br>
+<input type="radio" name="q1" value="b"> Deliver products effectively to target customers<br>
+<input type="radio" name="q1" value="c"> Reduce company costs<br>
+<input type="radio" name="q1" value="d"> Replace competitors<br>
+</div>
+
+<div class="question">
+2. Marketing should begin at which stage?<br>
+<input type="radio" name="q2" value="a"> After product launch<br>
+<input type="radio" name="q2" value="b"> Before product development<br>
+<input type="radio" name="q2" value="c"> After advertising<br>
+<input type="radio" name="q2" value="d"> During sales<br>
+</div>
+
+<div class="question">
+3. A transaction occurs when:<br>
+<input type="radio" name="q3" value="a"> Price is lowest<br>
+<input type="radio" name="q3" value="b"> Perceived benefit exceeds perceived cost<br>
+<input type="radio" name="q3" value="c"> Product is new<br>
+<input type="radio" name="q3" value="d"> Brand is famous<br>
+</div>
+
+<div class="question">
+4. In marketing, “need” refers to:<br>
+<input type="radio" name="q4" value="a"> Specific product preference<br>
+<input type="radio" name="q4" value="b"> Fundamental human requirement<br>
+<input type="radio" name="q4" value="c"> Brand loyalty<br>
+<input type="radio" name="q4" value="d"> Advertising demand<br>
+</div>
+
+<div class="question">
+5. Which framework evaluates industry competitiveness?<br>
+<input type="radio" name="q5" value="a"> SWOT<br>
+<input type="radio" name="q5" value="b"> Porter's Five Forces<br>
+<input type="radio" name="q5" value="c"> PESTLE<br>
+<input type="radio" name="q5" value="d"> Balanced Scorecard<br>
+</div>
+
+<div class="question">
+6. SWOT analysis includes:<br>
+<input type="radio" name="q6" value="a"> Strengths and Weaknesses only<br>
+<input type="radio" name="q6" value="b"> Internal and external strategic factors<br>
+<input type="radio" name="q6" value="c"> Market share only<br>
+<input type="radio" name="q6" value="d"> Revenue metrics only<br>
+</div>
+
+<div class="question">
+7. In consumer decision making, alternatives represent:<br>
+<input type="radio" name="q7" value="a"> Direct competitors only<br>
+<input type="radio" name="q7" value="b"> Different ways to satisfy the same need<br>
+<input type="radio" name="q7" value="c"> Only premium products<br>
+<input type="radio" name="q7" value="d"> Government regulations<br>
+</div>
+
+<div class="question">
+8. Brand value primarily influences:<br>
+<input type="radio" name="q8" value="a"> Emotional and functional benefits<br>
+<input type="radio" name="q8" value="b"> Manufacturing cost<br>
+<input type="radio" name="q8" value="c"> Inventory levels<br>
+<input type="radio" name="q8" value="d"> Logistics efficiency<br>
+</div>
+
+<div class="question">
+9. Which concept explains different levels of human needs?<br>
+<input type="radio" name="q9" value="a"> Maslow's hierarchy<br>
+<input type="radio" name="q9" value="b"> Lean model<br>
+<input type="radio" name="q9" value="c"> Agile framework<br>
+<input type="radio" name="q9" value="d"> Porter model<br>
+</div>
+
+<div class="question">
+10. A strong GTM strategy requires selecting:<br>
+<input type="radio" name="q10" value="a"> Target customers and value proposition<br>
+<input type="radio" name="q10" value="b"> Only pricing<br>
+<input type="radio" name="q10" value="c"> Only advertising<br>
+<input type="radio" name="q10" value="d"> Only technology<br>
+</div>
+
+<button type="button" onclick="submitQuiz()">Submit Quiz</button>
+
+</form>
+
+<div id="result" class="result"></div>
+
+</div>
+
+<script>
+
+var timeLeft = 600;
+
+var timer = setInterval(function(){
+
+    var minutes = Math.floor(timeLeft / 60);
+    var seconds = timeLeft % 60;
+
+    document.getElementById("time").innerHTML =
+        minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
+
+    timeLeft--;
+
+    if(timeLeft < 0){
+        clearInterval(timer);
+        submitQuiz();
+    }
+
+},1000);
+
+function submitQuiz(){
+
+    clearInterval(timer);
+
+    var answers = {
+        q1:"b",
+        q2:"b",
+        q3:"b",
+        q4:"b",
+        q5:"b",
+        q6:"b",
+        q7:"b",
+        q8:"a",
+        q9:"a",
+        q10:"a"
+    };
+
+    var score = 0;
+
+    for(var q in answers){
+
+        var options = document.getElementsByName(q);
+
+        for(var i=0;i<options.length;i++){
+
+            if(options[i].checked && options[i].value == answers[q]){
+                score++;
+            }
+
+        }
+
+    }
+
+    document.getElementById("result").innerHTML =
+        "Your Score: " + score + " / 10";
+
+}
+
+</script>
+
+</body>
+</html>
