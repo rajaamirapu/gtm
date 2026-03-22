@@ -1,236 +1,240 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <title>GTM Strategy Quiz</title>
-
 <style>
-
-body{
-font-family:Arial;
-background:#f4f6f9;
-margin:40px;
-}
-
-.container{
-max-width:900px;
-margin:auto;
-background:white;
-padding:30px;
-border-radius:10px;
-box-shadow:0 0 10px rgba(0,0,0,0.1);
-}
-
-.timer{
-float:right;
-font-size:22px;
-color:red;
-font-weight:bold;
-}
-
-.question{
-margin-top:18px;
-padding:10px;
-border-bottom:1px solid #ddd;
-}
-
-.correct{
-background:#d4edda;
-}
-
-.wrong{
-background:#f8d7da;
-}
-
-button{
-margin-top:20px;
-padding:10px 20px;
-background:#2c3e50;
-color:white;
-border:none;
-border-radius:5px;
-cursor:pointer;
-}
-
-.result{
-font-size:22px;
-font-weight:bold;
-margin-top:20px;
-}
-
-.answer{
-color:#155724;
-font-weight:bold;
-}
-
+    body {
+        font-family: Arial, sans-serif;
+        background: #f4f6f9;
+        padding: 20px;
+    }
+    .container {
+        max-width: 800px;
+        margin: auto;
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h2 { text-align: center; }
+    .timer {
+        text-align: center;
+        font-size: 20px;
+        color: red;
+        margin-bottom: 20px;
+    }
+    .question {
+        margin-bottom: 20px;
+    }
+    .option {
+        display: block;
+        margin: 8px 0;
+        padding: 10px;
+        background: #e9ecef;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    .option:hover { background: #d6d8db; }
+    .correct { background: #28a745 !important; color: white; }
+    .wrong { background: #dc3545 !important; color: white; }
+    .next-btn {
+        margin-top: 20px;
+        padding: 10px 20px;
+        background: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    .score {
+        text-align: center;
+        font-size: 22px;
+    }
 </style>
 </head>
 
 <body>
-
 <div class="container">
+    <h2>Confusing GTM Strategy Quiz 🤯</h2>
+    <div class="timer" id="timer">60:00</div>
 
-<h1>Go-To-Market Strategy Quiz</h1>
+    <div id="quiz"></div>
+    <button class="next-btn" onclick="nextQuestion()">Next</button>
 
-<div class="timer">
-Time Left: <span id="time">20:00</span>
-</div>
-
-<form id="quizForm">
-
-<div class="question" id="q1">
-1. What is the purpose of Go-To-Market strategy?<br>
-<input type="radio" name="q1" value="a"> Increase production<br>
-<input type="radio" name="q1" value="b"> Deliver product to target customers<br>
-<input type="radio" name="q1" value="c"> Hire employees<br>
-<input type="radio" name="q1" value="d"> Reduce costs<br>
-<div class="answer" id="a1"></div>
-</div>
-
-<div class="question" id="q2">
-2. Marketing mainly focuses on:<br>
-<input type="radio" name="q2" value="a"> Manufacturing<br>
-<input type="radio" name="q2" value="b"> Customer value<br>
-<input type="radio" name="q2" value="c"> Logistics<br>
-<input type="radio" name="q2" value="d"> HR<br>
-<div class="answer" id="a2"></div>
-</div>
-
-<div class="question" id="q3">
-3. A transaction occurs when:<br>
-<input type="radio" name="q3" value="a"> Demand increases<br>
-<input type="radio" name="q3" value="b"> Perceived benefit > perceived cost<br>
-<input type="radio" name="q3" value="c"> Marketing increases<br>
-<input type="radio" name="q3" value="d"> Production increases<br>
-<div class="answer" id="a3"></div>
-</div>
-
-<div class="question" id="q4">
-4. Which theory explains hierarchy of needs?<br>
-<input type="radio" name="q4" value="a"> Porter<br>
-<input type="radio" name="q4" value="b"> Maslow<br>
-<input type="radio" name="q4" value="c"> SWOT<br>
-<input type="radio" name="q4" value="d"> Lean<br>
-<div class="answer" id="a4"></div>
-</div>
-
-<div class="question" id="q5">
-5. A need refers to:<br>
-<input type="radio" name="q5" value="a"> Product<br>
-<input type="radio" name="q5" value="b"> Basic human requirement<br>
-<input type="radio" name="q5" value="c"> Brand<br>
-<input type="radio" name="q5" value="d"> Advertising<br>
-<div class="answer" id="a5"></div>
-</div>
-
-<!-- Remaining questions -->
-
-<div id="more"></div>
-
-<button type="button" onclick="submitQuiz()">Submit Quiz</button>
-
-</form>
-
-<div id="result" class="result"></div>
-
+    <div class="score" id="score"></div>
 </div>
 
 <script>
+const questions = [
+{
+    q: "Which statement BEST represents 'value' in marketing?",
+    options: [
+        "Price of the product",
+        "Perceived benefit minus perceived cost",
+        "Customer satisfaction only",
+        "Brand awareness"
+    ],
+    answer: 1
+},
+{
+    q: "A company choosing NOT to compete in a segment means:",
+    options: [
+        "They have no competitors",
+        "They avoided substitutes",
+        "They chose their competition strategically",
+        "They lack capability"
+    ],
+    answer: 2
+},
+{
+    q: "Which of the following is NOT a role in buying behavior?",
+    options: [
+        "Gatekeeper",
+        "Influencer",
+        "Compiler",
+        "Decision maker"
+    ],
+    answer: 2
+},
+{
+    q: "Why do customers stop taking medicine before full course?",
+    options: [
+        "Lack of availability",
+        "Attribution theory & lack of feedback",
+        "High pricing",
+        "Poor branding"
+    ],
+    answer: 1
+},
+{
+    q: "Which is the MOST confusing truth about competition?",
+    options: [
+        "Competition is always direct",
+        "Competition is chosen by the seller",
+        "Competition doesn’t exist",
+        "Competition only reduces profit"
+    ],
+    answer: 1
+},
+{
+    q: "What is the core challenge in GTM strategy?",
+    options: [
+        "Choosing colors for product",
+        "Selecting office location",
+        "Choosing target segment & value proposition",
+        "Hiring employees"
+    ],
+    answer: 2
+},
+{
+    q: "Why is over-promising dangerous?",
+    options: [
+        "It increases sales too fast",
+        "Customers blame themselves for failure",
+        "Customers blame the company for failure",
+        "It reduces marketing cost"
+    ],
+    answer: 2
+},
+{
+    q: "Need vs Want confusion: Which is correct?",
+    options: [
+        "Need = Product, Want = Brand always",
+        "Need is fixed, Want varies based on context",
+        "Want is always unnecessary",
+        "Need and Want are same"
+    ],
+    answer: 1
+},
+{
+    q: "Why is 'brand' powerful?",
+    options: [
+        "It reduces production cost",
+        "It replaces product",
+        "It adds emotional and functional value",
+        "It removes competition"
+    ],
+    answer: 2
+},
+{
+    q: "What is the biggest GTM mistake?",
+    options: [
+        "Not advertising",
+        "Ignoring customer behavior stages",
+        "Low pricing",
+        "Using technology"
+    ],
+    answer: 1
+}
+];
 
-const answers={
-q1:"b",
-q2:"b",
-q3:"b",
-q4:"b",
-q5:"b",
-q6:"a",
-q7:"b",
-q8:"a",
-q9:"c",
-q10:"a",
-q11:"a",
-q12:"c",
-q13:"a",
-q14:"a",
-q15:"d",
-q16:"a",
-q17:"d",
-q18:"a",
-q19:"a",
-q20:"b",
-q21:"a",
-q22:"a",
-q23:"a",
-q24:"a",
-q25:"a",
-q26:"d",
-q27:"a",
-q28:"a",
-q29:"a",
-q30:"a"
-};
+let current = 0;
+let score = 0;
 
-var timeLeft=1200;
+function loadQuestion() {
+    if (current >= questions.length) {
+        document.getElementById("quiz").innerHTML = "";
+        document.getElementById("score").innerHTML =
+            "Final Score: " + score + "/" + questions.length;
+        return;
+    }
 
-var timer=setInterval(function(){
+    let q = questions[current];
+    let html = "<div class='question'><h3>" + (current+1) + ". " + q.q + "</h3>";
 
-var minutes=Math.floor(timeLeft/60);
-var seconds=timeLeft%60;
+    q.options.forEach((opt, i) => {
+        html += `<div class="option" onclick="checkAnswer(${i}, this)">
+                    ${opt}
+                 </div>`;
+    });
 
-document.getElementById("time").innerHTML=
-minutes+":"+(seconds<10?"0":"")+seconds;
-
-timeLeft--;
-
-if(timeLeft<0){
-clearInterval(timer);
-submitQuiz();
+    html += "</div>";
+    document.getElementById("quiz").innerHTML = html;
 }
 
-},1000);
+function checkAnswer(selected, element) {
+    let correct = questions[current].answer;
+    let options = document.querySelectorAll(".option");
 
+    options.forEach((opt, i) => {
+        if (i === correct) opt.classList.add("correct");
+        if (i === selected && i !== correct) opt.classList.add("wrong");
+    });
 
-function submitQuiz(){
-
-clearInterval(timer);
-
-var score=0;
-
-for(let q in answers){
-
-let options=document.getElementsByName(q);
-let selected=null;
-
-for(let opt of options){
-if(opt.checked) selected=opt.value;
+    if (selected === correct) score++;
+    else {
+        alert("Wrong! Correct answer is: " +
+            questions[current].options[correct]);
+    }
 }
 
-let questionDiv=document.getElementById(q);
-
-if(selected==answers[q]){
-
-score++;
-questionDiv.classList.add("correct");
-
-}else{
-
-questionDiv.classList.add("wrong");
-
+function nextQuestion() {
+    current++;
+    loadQuestion();
 }
 
-let answerText="Correct Answer: "+answers[q].toUpperCase();
+// TIMER (1 hour)
+let time = 60 * 60;
+const timerElement = document.getElementById("timer");
 
-let ansDiv=document.getElementById("a"+q.substring(1));
+const countdown = setInterval(() => {
+    let minutes = Math.floor(time / 60);
+    let seconds = time % 60;
 
-if(ansDiv) ansDiv.innerHTML=answerText;
+    timerElement.innerHTML =
+        `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
 
-}
+    time--;
 
-document.getElementById("result").innerHTML="Score: "+score+" / 30";
+    if (time < 0) {
+        clearInterval(countdown);
+        alert("Time's up!");
+        document.getElementById("quiz").innerHTML = "";
+    }
+}, 1000);
 
-}
-
+loadQuestion();
 </script>
-
 </body>
 </html>
